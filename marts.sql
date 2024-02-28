@@ -5,6 +5,8 @@ CREATE TABLE marts.vaccination_centers AS (
         *,
         case
             when
+                -- If the center is with Doctolib but has a phone number, we consider
+                -- that 80% of its appointments are booked via Doctolib, 20% via phone.
                 is_with_doctolib
                 and has_phone
                 then 0.8
